@@ -1,15 +1,13 @@
-import { useEffect, useState } from "react";
+/** @format */
+
 import { useNavigate } from "react-router-dom";
 
 export default function History() {
-  const [history, setHistory] = useState([]);
+  const history = (() => {
+    const stored = localStorage.getItem("history");
+    return stored ? JSON.parse(stored) : [];
+  })();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const storedHistory =
-      JSON.parse(localStorage.getItem("history")) || [];
-    setHistory(storedHistory);
-  }, []);
 
   return (
     <div className="p-6">
@@ -24,11 +22,7 @@ export default function History() {
             className="mb-6 cursor-pointer"
             onClick={() => navigate(`/watch/${video.id}`)}
           >
-            <img
-              src={video.thumbnail}
-              alt={video.title}
-              width="300"
-            />
+            <img src={video.thumbnail} alt={video.title} width="300" />
             <h3 className="mt-2">{video.title}</h3>
           </div>
         ))

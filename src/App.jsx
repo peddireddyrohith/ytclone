@@ -74,7 +74,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Feed from "./components/Feed";
 import WatchPage from "./components/WatchPage";
-import history from "./components/history";
+import History from "./components/History";
 import SearchFeed from "./components/SearchFeed";
 import Navbar from "./components/Navbar";
 
